@@ -11,7 +11,7 @@ st.title('Asthma Disease Dashboard')
 data = {}
 severity_percentage = 0
 username = ""
-
+st.info(' 👈 Enter the name in the sidebar to save the data')
 co1,co2,co3 = st.columns(3)
 coo1,coo2,coo3 = st.columns(3)
 # Define feature weights based on importance values
@@ -77,7 +77,7 @@ def calculate_severity_percentage(symptoms):
             severity_percentage += value * feature_weights[symptom]
     return severity_percentage * 100  # Multiply by 100 to get percentage
 
-st.info(' 👈 Enter the name in the sidebar to save the data')
+
 with co1:
     #st.write('Enter the symptoms below:')
         tiredness = st.selectbox('Tiredness', ['<Select>','Yes', 'No'])
