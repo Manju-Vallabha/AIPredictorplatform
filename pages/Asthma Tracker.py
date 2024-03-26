@@ -13,6 +13,7 @@ severity_percentage = 0
 username = ""
 
 co1,co2,co3 = st.columns(3)
+coo1,coo2,coo3 = st.columns(3)
 # Define feature weights based on importance values
 feature_weights = {
     'Pains': 0.161170,
@@ -100,9 +101,9 @@ user_input = {
 
 
 
-with co1:
+with coo1:
     button  = st.button('Calculate Severity')
-    with co2:
+    with coo2:
         alert = st.button('Send Alert')
     if button:
         severity_percentage = calculate_severity_percentage(user_input)
