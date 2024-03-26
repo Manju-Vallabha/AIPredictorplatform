@@ -84,8 +84,9 @@ with co1:
 with co2:
         sore_throat = st.selectbox('Sore Throat', ['<Select>','Yes', 'No'])
         pains = st.selectbox('Pains', ['<Select>','Yes', 'No'])
-        nasal_congestion = st.selectbox('Nasal Congestion', ['<Select>','Yes', 'No'])
+        
 with co3:
+        nasal_congestion = st.selectbox('Nasal Congestion', ['<Select>','Yes', 'No'])
         runny_nose = st.selectbox('Runny Nose', ['<Select>','Yes', 'No'])
 
 user_input = {
@@ -102,8 +103,10 @@ user_input = {
 
 
 with coo1:
-    button  = st.button('Calculate Severity')
-    with coo2:
+    cf,cg = st.columns([1,1])
+    with cf:
+        button  = st.button('Calculate Severity')
+    with cg:
         alert = st.button('Send Alert')
     if button:
         severity_percentage = calculate_severity_percentage(user_input)
@@ -164,5 +167,4 @@ with st.sidebar:
             for username, entries in data.items():
                 for entry in entries:
                     writer.writerow([username, entry['date'], entry['severity']])
-
 
