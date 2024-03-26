@@ -101,9 +101,7 @@ user_input = {
         'Runny-Nose': 1 if runny_nose == 'Yes' else 0,
     }
 
-
-
-
+severity_percentage = calculate_severity_percentage(user_input)
 with coo1:
     cf,cg = st.columns([1,1])
     with cf:
@@ -111,16 +109,10 @@ with coo1:
     with cg:
         alert = st.button('Send Alert')
     if button:
-        severity_percentage = calculate_severity_percentage(user_input)
         if severity_percentage > 50:
             st.error(f'{severity_percentage} % High risk of Asthma attack!')
         else:
             st.info(f'{severity_percentage} % Low risk of Asthma attack!')
-
-
-
-    
-
 
 # Read existing data from the CSV file, if it exists
 try:
