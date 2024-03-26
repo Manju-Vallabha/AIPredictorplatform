@@ -26,9 +26,33 @@ feature_weights = {
 def email_alert():
     email_sender = "99210041261@klu.ac.in"
     email_password = "wsno odxi crqz gbaa"
-    email_recipient = "pmanjuvallabha@gmail.com"
-    subject = "Asthma Alert"
-    body = "High risk of Asthma attack!"
+    email_recipient = "99220040028@klu.ac.in"
+    subject = f"Asthma Alert for the Patient! {username}"
+    body = f"""
+Dear Doctor ,
+
+I hope this message finds you well.
+
+I am writing to inform you about a potential risk of an Asthma exacerbation in one of your patients.
+
+Based on the symptoms reported, there is a significant likelihood of an impending Asthma attack. The patient's symptoms are as follows:
+
+- Tiredness: {tiredness}
+- Dry Cough: {dry_cough}
+- Difficulty in Breathing: {difficulty_breathing}
+- Sore Throat: {sore_throat}
+- Pains: {pains}
+- Nasal Congestion: {nasal_congestion}
+- Runny Nose: {runny_nose}
+
+As their healthcare provider, I kindly request your attention to this matter. Please review the patient's condition and provide necessary guidance or intervention as deemed appropriate.
+
+Your prompt attention to this matter is greatly appreciated.
+
+Best regards,
+Asthma Alert System
+"""
+
     em = EmailMessage()
     em['From'] = email_sender
     em['To'] = email_recipient
