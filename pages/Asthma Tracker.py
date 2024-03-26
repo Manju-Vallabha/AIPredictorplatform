@@ -47,6 +47,8 @@ Based on the symptoms reported, there is a significant likelihood of an impendin
 - Nasal Congestion: {nasal_congestion}
 - Runny Nose: {runny_nose}
 
+Date: {date}
+
 The calculated severity percentage is {severity_percentage}%.
 
 As their healthcare provider, I kindly request your attention to this matter. Please review the patient's condition and provide necessary guidance or intervention as deemed appropriate.
