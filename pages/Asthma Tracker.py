@@ -47,6 +47,8 @@ Based on the symptoms reported, there is a significant likelihood of an impendin
 - Nasal Congestion: {nasal_congestion}
 - Runny Nose: {runny_nose}
 
+The calculated severity percentage is {severity_percentage}%.
+
 As their healthcare provider, I kindly request your attention to this matter. Please review the patient's condition and provide necessary guidance or intervention as deemed appropriate.
 
 Your prompt attention to this matter is greatly appreciated.
@@ -75,7 +77,7 @@ def calculate_severity_percentage(symptoms):
             severity_percentage += value * feature_weights[symptom]
     return severity_percentage * 100  # Multiply by 100 to get percentage
 
-
+st.info(' 👈 Enter the name in the sidebar to save the data')
 with co1:
     #st.write('Enter the symptoms below:')
         tiredness = st.selectbox('Tiredness', ['<Select>','Yes', 'No'])
