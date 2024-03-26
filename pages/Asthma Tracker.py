@@ -107,9 +107,9 @@ with co1:
     if button:
         severity_percentage = calculate_severity_percentage(user_input)
         if severity_percentage > 50:
-            st.error('High risk of Asthma attack!')
+            st.error(f'{severity_percentage} % High risk of Asthma attack!')
         else:
-            st.info('Low risk of Asthma attack!')
+            st.info(f'{severity_percentage} % Low risk of Asthma attack!')
 
 
 
