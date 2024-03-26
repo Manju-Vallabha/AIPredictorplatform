@@ -10,6 +10,7 @@ st.title('Asthma Disease Dashboard')
 
 data = {}
 severity_percentage = 0
+username = ""
 
 co1,co2,co3 = st.columns(3)
 # Define feature weights based on importance values
@@ -95,6 +96,10 @@ user_input = {
         'Nasal-Congestion': 1 if nasal_congestion == 'Yes' else 0,
         'Runny-Nose': 1 if runny_nose == 'Yes' else 0,
     }
+
+
+
+
 with co1:
     button  = st.button('Calculate Severity')
     with co2:
@@ -104,12 +109,8 @@ with co1:
         if severity_percentage > 50:
             st.error('High risk of Asthma attack!')
 
-if alert:
-            try:
-                    email_alert()
-                    st.success('Alert sent to the registered email!')
-            except Exception as e:
-                    st.error(f"Failed to send email: {e}")
+
+
     
 
 
@@ -132,6 +133,13 @@ with st.sidebar:
 # Get user input
     username = st.text_input("Enter the username: ")
     date = st.date_input("Enter the date:")
+
+if alert:
+            try:
+                    email_alert()
+                    st.success('Alert sent to the registered email!')
+            except Exception as e:
+                    st.error(f"Failed to send email: {e}")
 
 
 
