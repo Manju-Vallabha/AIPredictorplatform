@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
+from streamlit_lottie import st_lottie
+import json
 
 st.set_page_config(page_title='AI Disease Prediction Platform', layout='centered',page_icon='👨‍⚕️')
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+logo = load_lottiefile("h.json")
+
 st.title("AI Disease Prediction Platform")
+c1,c2,c3 = st.columns([1,1,1])
+with c2:
+    st_lottie(logo, speed=1, width=200, height=200, key="initial")
 
 # Load the data
 df = pd.read_csv('user_data.csv')
