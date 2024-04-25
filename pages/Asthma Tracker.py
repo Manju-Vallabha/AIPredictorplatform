@@ -137,11 +137,8 @@ with st.sidebar:
     date = st.date_input("Enter the date:")
 
 if alert:
-            try:
-                    email_alert()
-                    st.success('Alert sent to the registered email!')
-            except Exception as e:
-                    st.error(f"Failed to send email: {e}")
+    st.info('Alert Service is stopeed due to some security reasons!!!...')
+            
 
 
 
