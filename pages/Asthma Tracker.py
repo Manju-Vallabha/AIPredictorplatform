@@ -3,6 +3,7 @@ import csv
 from email.message import EmailMessage
 import smtplib
 import ssl
+import time
 
 
 st.set_page_config(page_title='Asthma Disease Tracker', layout='wide')
@@ -27,7 +28,7 @@ feature_weights = {
 
 def email_alert():
     email_sender = "99210041261@klu.ac.in"
-    email_password = ""
+    email_password = "mjtp bbzt nbom esjw"
     email_recipient = "99220040645@klu.ac.in"
     subject = f"Asthma Alert for the Patient! {username}"
     body = f"""
@@ -137,7 +138,8 @@ with st.sidebar:
     date = st.date_input("Enter the date:")
 
 if alert:
-    st.info('Alert Service is stopeed due to some security reasons!!!...')
+    email_alert()
+    st.success("Email sent successfully!")
             
 
 
