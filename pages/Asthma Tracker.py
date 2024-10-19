@@ -27,9 +27,9 @@ feature_weights = {
 }
 
 def email_alert():
-    email_sender = "99210041261@klu.ac.in"
-    email_password = "mjtp bbzt nbom esjw"
-    email_recipient = "99220040028@klu.ac.in"
+    email_sender = "99220040028@klu.ac.in"
+    email_password = "pfah uiql udka nisi"
+    email_recipient = "99220040061@klu.ac.in"
     subject = f"Asthma Alert for the Patient! {username}"
     body = f"""
 Dear Doctor ,
