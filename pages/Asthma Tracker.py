@@ -102,14 +102,17 @@ user_input = {
     'Runny-Nose': 1 if runny_nose == 'Yes' else 0,
 }
 
-# Calculate severity percentage
-severity_percentage = calculate_severity_percentage(user_input)
-
-# Show severity status
+# Predict button to calculate severity
 with coo1:
+    predict_button = st.button('Predict Severity')
+
+# If Predict button is clicked, calculate severity
+if predict_button:
+    severity_percentage = calculate_severity_percentage(user_input)
+    
     if severity_percentage > 50:
         st.error(f'{severity_percentage}% High risk of Asthma attack! An alert has been sent to the doctor.')
-        email_alert()  # Automatically send an alert if severity is above 50%
+        email_alert()  # Send alert if severity is above 50%
     else:
         st.info(f'{severity_percentage}% Low risk of Asthma attack.')
 
@@ -139,9 +142,9 @@ if username in data:
 else:
     data[username] = [{'date': date, 'severity': severity_percentage}]
 
-# Save data to CSV file
+# Save data to CSV file if Predict button was clicked
 with st.sidebar:
-    if severity_percentage > 0:
+    if predict_button:
         with open('user_data.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['Username', 'Date', 'Severity'])  # Write header
