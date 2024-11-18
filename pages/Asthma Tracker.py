@@ -105,6 +105,8 @@ user_input = {
 
 # Predict button to calculate severity
 with coo1:
+    send = st.button('Send Email')
+with coo2:
     predict_button = st.button('Predict Severity')
 
 # If Predict button is clicked, calculate severity
@@ -112,6 +114,12 @@ with st.sidebar:
     # Get user input for username and date
     username = st.text_input("Enter the username: ")
     date = st.date_input("Enter the date:")
+if send:
+    st.info("Sending an email to the doctor because the severity threshold has been reached.")
+    email_alert(username, date, severity_percentage, user_input)  # Send alert if severity is above 60%
+    st.success('Email sent successfully!')
+    
+
 
 if predict_button:
     # Convert 'Yes'/'No' to 1/0 for calculation
@@ -120,6 +128,7 @@ if predict_button:
     
     if severity_percentage > 60:
         st.error(f'{severity_percentage}% High risk of Asthma attack! An alert has been sent to the doctor.')
+        st.info("Sending an email to the doctor because the severity threshold has been reached.")
         email_alert(username, date, severity_percentage, user_input)  # Send alert if severity is above 60%
         st.success('Email sent successfully!')
     else:
