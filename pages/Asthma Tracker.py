@@ -118,9 +118,10 @@ if predict_button:
     symptoms_binary = {key: 1 if value == 'Yes' else 0 for key, value in user_input.items()}
     severity_percentage = calculate_severity_percentage(symptoms_binary)
     
-    if severity_percentage > 50:
+    if severity_percentage > 60:
         st.error(f'{severity_percentage}% High risk of Asthma attack! An alert has been sent to the doctor.')
-        email_alert(username, date, severity_percentage, user_input)  # Send alert if severity is above 50%
+        email_alert(username, date, severity_percentage, user_input)  # Send alert if severity is above 60%
+        st.success('Email sent successfully!')
     else:
         st.info(f'{severity_percentage}% Low risk of Asthma attack.')
 
