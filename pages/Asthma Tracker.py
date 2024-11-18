@@ -26,7 +26,7 @@ feature_weights = {
     'Difficulty-in-Breathing': 0.131413
 }
 
-def email_alert():
+def email_alert(username, date, severity_percentage, symptoms):
     email_sender = "99220040028@klu.ac.in"
     email_password = "pfah uiql udka nisi"
     email_recipient = "99220040061@klu.ac.in"
@@ -40,13 +40,13 @@ I am writing to inform you about a potential risk of an Asthma exacerbation in o
 
 Based on the symptoms reported, there is a significant likelihood of an impending Asthma attack. The patient's symptoms are as follows:
 
-- Tiredness: {tiredness}
-- Dry Cough: {dry_cough}
-- Difficulty in Breathing: {difficulty_breathing}
-- Sore Throat: {sore_throat}
-- Pains: {pains}
-- Nasal Congestion: {nasal_congestion}
-- Runny Nose: {runny_nose}
+- Tiredness: {symptoms['Tiredness']}
+- Dry Cough: {symptoms['Dry-Cough']}
+- Difficulty in Breathing: {symptoms['Difficulty-in-Breathing']}
+- Sore Throat: {symptoms['Sore-Throat']}
+- Pains: {symptoms['Pains']}
+- Nasal Congestion: {symptoms['Nasal-Congestion']}
+- Runny Nose: {symptoms['Runny-Nose']}
 
 Date: {date}
 
@@ -93,13 +93,13 @@ with co3:
 
 # Converting user input to binary values for calculation
 user_input = {
-    'Tiredness': 1 if tiredness == 'Yes' else 0,
-    'Dry-Cough': 1 if dry_cough == 'Yes' else 0,
-    'Difficulty-in-Breathing': 1 if difficulty_breathing == 'Yes' else 0,
-    'Sore-Throat': 1 if sore_throat == 'Yes' else 0,
-    'Pains': 1 if pains == 'Yes' else 0,
-    'Nasal-Congestion': 1 if nasal_congestion == 'Yes' else 0,
-    'Runny-Nose': 1 if runny_nose == 'Yes' else 0,
+    'Tiredness': 'Yes' if tiredness == 'Yes' else 'No',
+    'Dry-Cough': 'Yes' if dry_cough == 'Yes' else 'No',
+    'Difficulty-in-Breathing': 'Yes' if difficulty_breathing == 'Yes' else 'No',
+    'Sore-Throat': 'Yes' if sore_throat == 'Yes' else 'No',
+    'Pains': 'Yes' if pains == 'Yes' else 'No',
+    'Nasal-Congestion': 'Yes' if nasal_congestion == 'Yes' else 'No',
+    'Runny-Nose': 'Yes' if runny_nose == 'Yes' else 'No',
 }
 
 # Predict button to calculate severity
@@ -108,11 +108,13 @@ with coo1:
 
 # If Predict button is clicked, calculate severity
 if predict_button:
-    severity_percentage = calculate_severity_percentage(user_input)
+    # Convert 'Yes'/'No' to 1/0 for calculation
+    symptoms_binary = {key: 1 if value == 'Yes' else 0 for key, value in user_input.items()}
+    severity_percentage = calculate_severity_percentage(symptoms_binary)
     
     if severity_percentage > 50:
         st.error(f'{severity_percentage}% High risk of Asthma attack! An alert has been sent to the doctor.')
-        email_alert()  # Send alert if severity is above 50%
+        email_alert(username, date, severity_percentage, user_input)  # Send alert if severity is above 50%
     else:
         st.info(f'{severity_percentage}% Low risk of Asthma attack.')
 
