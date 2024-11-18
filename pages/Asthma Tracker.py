@@ -26,6 +26,7 @@ feature_weights = {
     'Difficulty-in-Breathing': 0.131413
 }
 
+# Modify the email_alert function to accept parameters
 def email_alert(username, date, severity_percentage, symptoms):
     email_sender = "99220040028@klu.ac.in"
     email_password = "pfah uiql udka nisi"
@@ -107,6 +108,11 @@ with coo1:
     predict_button = st.button('Predict Severity')
 
 # If Predict button is clicked, calculate severity
+with st.sidebar:
+    # Get user input for username and date
+    username = st.text_input("Enter the username: ")
+    date = st.date_input("Enter the date:")
+
 if predict_button:
     # Convert 'Yes'/'No' to 1/0 for calculation
     symptoms_binary = {key: 1 if value == 'Yes' else 0 for key, value in user_input.items()}
@@ -132,11 +138,6 @@ try:
                 data[username] = [{'date': date, 'severity': severity}]
 except FileNotFoundError:
     pass
-
-with st.sidebar:
-    # Get user input for username and date
-    username = st.text_input("Enter the username: ")
-    date = st.date_input("Enter the date:")
 
 # Check if user data already exists and update accordingly
 if username in data:
